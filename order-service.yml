@@ -22,7 +22,7 @@ spring:
 resilience4j:
   circuitbreaker:
     instances:
-      restaurantService:
+      sharedService:
         slidingWindowSize: 5
         failureRateThreshold: 50
         waitDurationInOpenState: 5s
@@ -31,7 +31,7 @@ resilience4j:
 
   retry:
     instances:
-      restaurantService:
+      sharedService:
         maxAttempts: 3
         waitDuration: 1s
 
