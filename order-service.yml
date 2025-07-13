@@ -19,6 +19,22 @@ spring:
       ddl-auto: update
     show-sql: true
 
+resilience4j:
+  circuitbreaker:
+    instances:
+      restaurantService:
+        slidingWindowSize: 5
+        failureRateThreshold: 50
+        waitDurationInOpenState: 5s
+        minimumNumberOfCalls: 5
+        permittedNumberOfCallsInHalfOpenState: 3
+
+  retry:
+    instances:
+      restaurantService:
+        maxAttempts: 3
+        waitDuration: 1s
+
 eureka:
   instance:
     prefer-ip-address: true
